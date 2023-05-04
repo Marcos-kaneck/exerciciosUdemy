@@ -8,23 +8,22 @@ package entities;
  *
  * @author User
  */
-public class Product {
+public class Employee {
 
     public String name;
-    public double price;
-    public int quantity;
+    public double grossSalary;
+    public double tax;
 
-    public double totalValueInStrock() {
-        return price * quantity;
+    public double netSalary() {
+        return grossSalary - tax;
     }
-    public void addProducts(int quantity){
-        this.quantity += quantity;
+
+    public void increaseSalary(double percentage) {
+
+        grossSalary += grossSalary * percentage / 100.0;
     }
-    public void removeProducts(int quantity){
-        this.quantity -= quantity;
-    }
-    public String toString(){
-        
-        return  name+", $ "+String.format("%.2f",price)+", "+quantity+" units"+", Total: "+String.format("%.2f",totalValueInStrock());
+
+    public String toString() {
+        return name + ", $" + String.format("%.2f", netSalary());
     }
 }
